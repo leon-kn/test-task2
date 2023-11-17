@@ -1,75 +1,43 @@
-# Nuxt 3 Minimal Starter
+# Тестовое задание на позицию Vue-разработчика в Tages
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### Описание тестового задания:
 
-## Setup
+На основании данных по товарам из приложенного items.json и названий материалов из materials.json отрисовать страницу со списком товаров согласно приложенному дизайну: https://www.figma.com/file/9Gcg8EvnmTDppPDxvRrmpi/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%0%BD%D0%B8%D0%B5-17-%D0%B8%D1%8E%D0%BB%D1%8F?node-id=1%3A23
 
-Make sure to install the dependencies:
 
-```bash
-# npm
-npm install
+Требования:
 
-# pnpm
-pnpm install
+1. Верстка - семантичная, по БЭМ, адаптивная
 
-# yarn
-yarn install
+2. Соответствующие селекторы сортируют записи по ценам (по возрастанию, по
+убыванию), и фильтруют по материалу (металл, дерево)
 
-# bun
-bun install
-```
+3. Исходные json файлы подвергаются изменениям только по полю image (по
+необходимости), в остальном остаются неизменными
 
-## Development Server
 
-Start the development server on `http://localhost:3000`:
+Приветствуется:
 
-```bash
-# npm
-npm run dev
+1. Выполнение задачи в рамках фреймворка VueJS или NuxtJS, на главной странице
+приложения
 
-# pnpm
-pnpm run dev
+2. Использование VueX/Pinia
 
-# yarn
-yarn dev
+3. Использование TypeScript
 
-# bun
-bun run dev
-```
 
-## Production
+Дополнительно*:
 
-Build the application for production:
+1. Товары добавляются в Избранные при помощи соответствующей кнопки (хранение
+в Local Storage)
 
-```bash
-# npm
-npm run build
+2. Товары добавляются в Корзину при помощи соответствующей кнопки (хранение в
+Local Storage)
 
-# pnpm
-pnpm run build
 
-# yarn
-yarn build
+Решение предоставить в виде публичного репозитория Github, а также приложения,
+раздеплоенного любым удобным способом, в т.ч. через Github Pages.
 
-# bun
-bun run build
-```
 
-Locally preview production build:
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Комментарии к решению задания:
