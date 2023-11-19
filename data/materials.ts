@@ -1,4 +1,4 @@
-[
+export const materials = [
   {
     id: "1",
     name: "Дерево",
