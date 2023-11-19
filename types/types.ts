@@ -3,7 +3,7 @@ export interface IItem {
   name: string;
   code: string;
   price: {
-    old_price: number;
+    old_price: number | null;
     current_price: number;
   };
   image: {

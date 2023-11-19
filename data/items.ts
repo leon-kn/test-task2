@@ -1,4 +1,4 @@
-[
+export const items = [
   {
     id: "1",
     name: "Ручка дверная",
@@ -8,7 +8,7 @@
       current_price: 355,
     },
     image: {
-      url: "/pic/pic1.png",
+      url: "_nuxt/assets/images/handle-wood.png",
     },
     material: 1,
   },
@@ -21,7 +21,7 @@
       current_price: 355.555,
     },
     image: {
-      url: "/pic/pic2.png",
+      url: "_nuxt/assets/images/handle-steel.png",
     },
     material: 2,
   },
@@ -34,7 +34,7 @@
       current_price: 75,
     },
     image: {
-      url: "/pic/pic3.png",
+      url: "_nuxt/assets/images/hinges-door.png",
     },
     material: 2,
   },
@@ -47,7 +47,7 @@
       current_price: 200,
     },
     image: {
-      url: "/pic/pic4.png",
+      url: "_nuxt/assets/images/hinges-door-stopper.png",
     },
     material: 2,
   },
@@ -60,7 +60,7 @@
       current_price: 720,
     },
     image: {
-      url: "/pic/pic1.png",
+      url: "_nuxt/assets/images/handle-wood.png",
     },
     material: 1,
   },
@@ -73,7 +73,7 @@
       current_price: 355.555,
     },
     image: {
-      url: "/pic/pic2.png",
+      url: "_nuxt/assets/images/handle-steel.png",
     },
     material: 2,
   },
@@ -86,7 +86,7 @@
       current_price: 75,
     },
     image: {
-      url: "/pic/pic3.png",
+      url: "_nuxt/assets/images/hinges-door.png",
     },
     material: 2,
   },
@@ -99,7 +99,7 @@
       current_price: 900,
     },
     image: {
-      url: "/pic/pic4.png",
+      url: "_nuxt/assets/images/hinges-door-stopper.png",
     },
     material: 2,
   },
