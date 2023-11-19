@@ -17,12 +17,10 @@
 <script setup lang="ts">
 import type { IMaterial } from "~/types/types";
 
-const props = defineProps({
-  options: {
-    type: Array as PropType<IMaterial[]>,
-  },
-  label: String,
-});
+const props = defineProps<{
+  options: IMaterial[];
+  label: string;
+}>();
 </script>
 
 <style lang="scss" scoped>

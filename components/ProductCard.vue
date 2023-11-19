@@ -13,7 +13,12 @@
         alt="product photo"
       />
     </div>
-    <p class="card__article">{{ item?.code }}</p>
+    <p
+      v-if="item.code"
+      class="card__article"
+    >
+      {{ item?.code }}
+    </p>
     <p class="card__title">{{ item?.name }}</p>
     <div class="card__price">
       <p
@@ -25,7 +30,7 @@
       <p class="card__price-new">{{ formattedCurrentPrice }}₽</p>
     </div>
     <div class="card__btn-cart"></div>
-    
+
     <div class="card__btn-favour"></div>
   </div>
 </template>
@@ -33,13 +38,9 @@
 <script setup lang="ts">
 import type { IItem } from "~/types/types";
 
-const props = defineProps({
-  item: {
-    type: Object as PropType<IItem>,
-    required: true,
-    default: () => {},
-  },
-});
+const props = defineProps<{
+  item: IItem;
+}>();
 
 const isDiscount = computed<boolean>(() => {
   return !!props.item?.price.old_price;

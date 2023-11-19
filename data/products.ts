@@ -1,4 +1,6 @@
-export const products = [
+import type { IItem } from "~/types/types";
+
+export const productsData: IItem[] = [
   {
     id: "1",
     name: "Ручка дверная",

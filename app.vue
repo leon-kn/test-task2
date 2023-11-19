@@ -12,7 +12,7 @@
         </div>
         <div class="product-list__grid">
           <ProductCard
-            v-for="item of productStore.products"
+            v-for="item of productStore.filteredProducts"
             :key="item.id"
             :item="(item as IItem)"
           />
