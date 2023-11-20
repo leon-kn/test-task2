@@ -73,7 +73,7 @@ const formattedCurrentPrice = computed<number>(() => {
 });
 
 const isProductInCart = computed(() => {
-  return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
+  return false;
 });
 </script>
 
