@@ -3,8 +3,7 @@
     <div class="content">
       <Breadcrumbs class="breadcrumbs" />
       <h1 class="title">Комплекты стеллажных систем</h1>
-      {{ productStore.sort }}
-      {{ productStore.filter }}
+      {{ productStore.cart }}
       <div class="product-list">
         <div class="product-list__actions">
           <SortByPrice />
@@ -14,7 +13,7 @@
           <ProductCard
             v-for="item of productStore.filteredProducts"
             :key="item.id"
-            :item="(item as IItem)"
+            :item="(item as IProduct)"
           />
         </div>
       </div>
@@ -23,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IItem } from "./types/types";
+import type { IProduct } from "./types/types";
 import { useProductStore } from "~/stores/ProductStore";
 
 const productStore = useProductStore();

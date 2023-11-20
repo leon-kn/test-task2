@@ -29,17 +29,35 @@
       </p>
       <p class="card__price-new">{{ formattedCurrentPrice }}₽</p>
     </div>
-    <div class="card__btn-cart"></div>
-
-    <div class="card__btn-favour"></div>
+    <div
+      class="card__btn-cart"
+      @click="addToCart()"
+    >
+      <img
+        v-if="isProductInCart()"
+        src="~/assets/svg/success.svg"
+      />
+      <img
+        v-else
+        src="~/assets/svg/cart.svg"
+      />
+    </div>
+    <div class="card__btn-favor">
+      <img src="~/assets/svg/favorite.svg" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { IItem } from "~/types/types";
+import type { IProduct } from "~/types/types";
+import { useProductStore } from "~/stores/ProductStore";
+import CartService from "~/services/cart.service";
+import FavoriteService from "~/services/favorite.service";
+
+const productStore = useProductStore();
 
 const props = defineProps<{
-  item: IItem;
+  item: IProduct;
 }>();
 
 const isDiscount = computed<boolean>(() => {
@@ -55,6 +73,28 @@ const formattedOldPrice = computed<number | undefined>(() => {
 const formattedCurrentPrice = computed<number>(() => {
   return Number(props.item?.price.current_price.toFixed(0));
 });
+
+const isProductInCart = () => {
+  const cart = CartService.getCart();
+  return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
+};
+
+const addToCart = () => {
+  if (!isProductInCart()) {
+    productStore.addProductToCart(props.item);
+  }
+};
+
+const isProductInFavorite = () => {
+  const favorite = FavoriteService.getFavorite();
+  return !!favorite.find((favoriteProduct) => favoriteProduct.id === props.item.id);
+};
+
+const addToFavorite = () => {
+  if (!isProductInCart()) {
+    productStore.addProductToCart(props.item);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -138,6 +178,20 @@ const formattedCurrentPrice = computed<number>(() => {
       letter-spacing: 0.02em;
       text-align: left;
     }
+  }
+
+  &__btn-cart {
+    position: absolute;
+    right: 15%;
+    bottom: 10px;
+    cursor: pointer;
+  }
+
+  &__btn-favor {
+    position: absolute;
+    right: 5%;
+    bottom: 9px;
+    cursor: pointer;
   }
 }
 </style>

@@ -1,4 +1,4 @@
-export interface IItem {
+export interface IProduct {
   id: string;
   name: string;
   code: string | null;
