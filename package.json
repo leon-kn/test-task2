@@ -11,8 +11,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@vueuse/core": "^10.6.1",
-    "@vueuse/nuxt": "^10.6.1",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "nuxt": "^3.8.1",
     "sass": "^1.69.5",
     "vue": "^3.3.8",

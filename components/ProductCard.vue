@@ -31,7 +31,7 @@
     </div>
     <div
       class="card__btn-cart"
-      @click="addProductToCart(item)"
+      @click="addProductInCart"
     >
       <img
         v-if="isProductInCart"
@@ -50,9 +50,11 @@
 
 <script setup lang="ts">
 import type { IProduct } from "~/types/types";
-import { useProductStore } from "~/stores/ProductStore";
+import { useCartStore } from "~/stores/CartStore";
+import { storeToRefs } from "pinia";
 
-const { cart, addProductToCart } = useProductStore();
+const cartStore = useCartStore();
+const { cart } = storeToRefs(cartStore);
 
 const props = defineProps<{
   item: IProduct;
@@ -72,9 +74,22 @@ const formattedCurrentPrice = computed<number>(() => {
   return Number(props.item?.price.current_price.toFixed(0));
 });
 
+// const isProductInCart = () => {
+//   console.log(!!cart.find((cartProduct) => cartProduct.id === props.item.id));
+//   return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
+// };
+
 const isProductInCart = computed(() => {
-  return false;
+  console.log(cart.value);
+  console.log(!!cart.value.find((cartProduct) => cartProduct.id === props.item.id));
+  return !!cart.value.find((cartProduct) => cartProduct.id === props.item.id);
 });
+
+const addProductInCart = () => {
+  if (!isProductInCart.value) {
+    cartStore.addToCart(props.item);
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -162,14 +177,14 @@ const isProductInCart = computed(() => {
 
   &__btn-cart {
     position: absolute;
-    right: 15%;
+    right: 50px;
     bottom: 10px;
     cursor: pointer;
   }
 
   &__btn-favor {
     position: absolute;
-    right: 5%;
+    right: 14px;
     bottom: 9px;
     cursor: pointer;
   }
