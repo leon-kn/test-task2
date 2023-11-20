@@ -31,7 +31,7 @@
     </div>
     <div
       class="card__btn-cart"
-      @click="addToCart()"
+      @click="addProductToCart(item)"
     >
       <img
         v-if="isProductInCart"
@@ -52,7 +52,7 @@
 import type { IProduct } from "~/types/types";
 import { useProductStore } from "~/stores/ProductStore";
 
-const { cart } = useProductStore();
+const { cart, addProductToCart } = useProductStore();
 
 const props = defineProps<{
   item: IProduct;
@@ -75,10 +75,6 @@ const formattedCurrentPrice = computed<number>(() => {
 const isProductInCart = computed(() => {
   return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
 });
-
-const addToCart = () => {
-  cart.push(props.item)
-};
 </script>
 
 <style lang="scss" scoped>

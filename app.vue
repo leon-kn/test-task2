@@ -61,4 +61,3 @@ const { filteredProducts } = useProductStore();
   }
 }
 </style>
-~/data/products
