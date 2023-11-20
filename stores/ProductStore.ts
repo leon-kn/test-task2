@@ -1,9 +1,21 @@
 import { productsData } from "~/data/products";
 import type { IProduct } from "~/types/types";
-import { useLocalStorage } from "@vueuse/core";
+import { useLocalStorage, StorageSerializers } from "@vueuse/core";
 
 export const useProductStore = defineStore("productStore", () => {
-  const cart = useLocalStorage<IProduct[]>("cart", ref([]), {});
+  const cart = useLocalStorage<IProduct[] | string>("cart", ref(), {
+    serializer: StorageSerializers.object,
+  });
+
+  const addProductToCart = (item: IProduct) => {
+    if (!cart.value) {
+      cart.value = [item];
+    }
+
+    if (cart.value && !cart.value.find((el) => el.id === item.id)) {
+      cart.value = [...cart.value, item];
+    }
+  };
 
   const products = ref<IProduct[]>(productsData);
   const sort = ref<string | null>(null);
@@ -45,5 +57,6 @@ export const useProductStore = defineStore("productStore", () => {
     setSort,
     setFilter,
     cart,
+    addProductToCart,
   };
 });
