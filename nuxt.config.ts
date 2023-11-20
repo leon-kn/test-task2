@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt"],
+  modules: ["@pinia/nuxt", "@vueuse/nuxt"],
   css: ["~/assets/scss/main.scss"],
   vite: {
     css: {

@@ -34,7 +34,7 @@
       @click="addToCart()"
     >
       <img
-        v-if="isProductInCart()"
+        v-if="isProductInCart"
         src="~/assets/svg/success.svg"
       />
       <img
@@ -51,10 +51,8 @@
 <script setup lang="ts">
 import type { IProduct } from "~/types/types";
 import { useProductStore } from "~/stores/ProductStore";
-import CartService from "~/services/cart.service";
-import FavoriteService from "~/services/favorite.service";
 
-const productStore = useProductStore();
+const { cart } = useProductStore();
 
 const props = defineProps<{
   item: IProduct;
@@ -74,26 +72,12 @@ const formattedCurrentPrice = computed<number>(() => {
   return Number(props.item?.price.current_price.toFixed(0));
 });
 
-const isProductInCart = () => {
-  const cart = CartService.getCart();
+const isProductInCart = computed(() => {
   return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
-};
+});
 
 const addToCart = () => {
-  if (!isProductInCart()) {
-    productStore.addProductToCart(props.item);
-  }
-};
-
-const isProductInFavorite = () => {
-  const favorite = FavoriteService.getFavorite();
-  return !!favorite.find((favoriteProduct) => favoriteProduct.id === props.item.id);
-};
-
-const addToFavorite = () => {
-  if (!isProductInCart()) {
-    productStore.addProductToCart(props.item);
-  }
+  cart.push(props.item)
 };
 </script>
 

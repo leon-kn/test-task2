@@ -2,7 +2,7 @@
   <Selector
     :label="FILTER_LABEL"
     :options="OPTIONS"
-    @change="(e) => productStore.setFilter(e.target.value)"
+    @change="(e) => setFilter(e.target.value)"
   />
 </template>
 
@@ -14,7 +14,7 @@ import Selector from "~/components/Selector.vue";
 const FILTER_LABEL = "Материал";
 const OPTIONS = materials;
 
-const productStore = useProductStore();
+const { setFilter } = useProductStore();
 </script>
 
 <style lang="scss" scoped></style>

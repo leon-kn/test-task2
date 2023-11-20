@@ -2,7 +2,7 @@
   <Selector
     :label="FILTER_LABEL"
     :options="OPTIONS"
-    @change="(e) => productStore.setSort(e.target.value)"
+    @change="(e) => setSort(e.target.value)"
   />
 </template>
 
@@ -16,7 +16,7 @@ const OPTIONS = [
   { id: "desc", name: "Цена по убыванию" },
 ];
 
-const productStore = useProductStore();
+const { setSort } = useProductStore();
 </script>
 
 <style lang="scss" scoped></style>

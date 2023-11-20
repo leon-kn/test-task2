@@ -3,7 +3,6 @@
     <div class="content">
       <Breadcrumbs class="breadcrumbs" />
       <h1 class="title">Комплекты стеллажных систем</h1>
-      {{ productStore.cart }}
       <div class="product-list">
         <div class="product-list__actions">
           <SortByPrice />
@@ -11,7 +10,7 @@
         </div>
         <div class="product-list__grid">
           <ProductCard
-            v-for="item of productStore.filteredProducts"
+            v-for="item of filteredProducts"
             :key="item.id"
             :item="(item as IProduct)"
           />
@@ -25,7 +24,7 @@
 import type { IProduct } from "./types/types";
 import { useProductStore } from "~/stores/ProductStore";
 
-const productStore = useProductStore();
+const { filteredProducts } = useProductStore();
 </script>
 
 <style lang="scss" scoped>
