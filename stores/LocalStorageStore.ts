@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import type { IProduct } from "~/types/types";
 
-export const useLocalStorageStore = defineStore("cartStore", {
+export const useLocalStorageStore = defineStore("localStorageStore", {
   state: () => {
     return {
       cart: [] as IProduct[],
