@@ -42,3 +42,5 @@ Local Storage)
 
 
 ### Комментарии к решению задания:
+
+**Деплой приложения** - https://test-task-tages.netlify.app/
