@@ -29,32 +29,44 @@
       </p>
       <p class="card__price-new">{{ formattedCurrentPrice }}₽</p>
     </div>
-    <div
-      class="card__btn-cart"
-      @click="addProductInCart"
-    >
-      <img
-        v-if="isProductInCart"
-        src="~/assets/svg/success.svg"
-      />
-      <img
-        v-else
-        src="~/assets/svg/cart.svg"
-      />
-    </div>
-    <div class="card__btn-favor">
-      <img src="~/assets/svg/favorite.svg" />
-    </div>
+    <ClientOnly>
+      <div
+        class="card__btn-cart"
+        @click="addProductInCart"
+      >
+        <img
+          v-if="isProductInCart"
+          src="~/assets/svg/success.svg"
+        />
+        <img
+          v-else
+          src="~/assets/svg/cart.svg"
+        />
+      </div>
+      <div
+        class="card__btn-favor"
+        @click="addToFavorite"
+      >
+        <img
+          v-if="isFavorite"
+          src="~/assets/svg/favorite-active.svg"
+        />
+        <img
+          v-else
+          src="~/assets/svg/favorite.svg"
+        />
+      </div>
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { IProduct } from "~/types/types";
-import { useCartStore } from "~/stores/CartStore";
+import { useLocalStorageStore } from "~/stores/LocalStorageStore";
 import { storeToRefs } from "pinia";
 
-const cartStore = useCartStore();
-const { cart } = storeToRefs(cartStore);
+const localStorageStore = useLocalStorageStore();
+const { cart, favorite } = storeToRefs(localStorageStore);
 
 const props = defineProps<{
   item: IProduct;
@@ -74,20 +86,23 @@ const formattedCurrentPrice = computed<number>(() => {
   return Number(props.item?.price.current_price.toFixed(0));
 });
 
-// const isProductInCart = () => {
-//   console.log(!!cart.find((cartProduct) => cartProduct.id === props.item.id));
-//   return !!cart.find((cartProduct) => cartProduct.id === props.item.id);
-// };
-
 const isProductInCart = computed(() => {
-  console.log(cart.value);
-  console.log(!!cart.value.find((cartProduct) => cartProduct.id === props.item.id));
-  return !!cart.value.find((cartProduct) => cartProduct.id === props.item.id);
+  return !!cart.value.find((product) => product.id === props.item.id);
 });
 
 const addProductInCart = () => {
   if (!isProductInCart.value) {
-    cartStore.addToCart(props.item);
+    localStorageStore.addToCart(props.item);
+  }
+};
+
+const isFavorite = computed(() => {
+  return !!favorite.value.find((product) => product.id === props.item.id);
+});
+
+const addToFavorite = () => {
+  if (!isFavorite.value) {
+    localStorageStore.addToFavorite(props.item);
   }
 };
 </script>
@@ -190,3 +205,4 @@ const addProductInCart = () => {
   }
 }
 </style>
+~/stores/LocalStorageStore

@@ -1,22 +1,24 @@
 <template>
-  <ul class="breadcrumbs">
-    <li
-      class="breadcrumbs__item"
-      v-for="(crumb, index) in breadcrumbs"
-      :key="index"
-    >
-      <a
-        class="breadcrumbs__link"
-        :href="crumb.url"
-        >{{ crumb.label }}</a
+  <div class="breadcrumbs">
+    <ul>
+      <li
+        class="breadcrumbs__item"
+        v-for="(crumb, index) in breadcrumbs"
+        :key="index"
       >
-      <span
-        v-if="index < breadcrumbs.length - 1"
-        class="breadcrumbs__separator"
-        >/</span
-      >
-    </li>
-  </ul>
+        <a
+          class="breadcrumbs__link"
+          :href="crumb.url"
+          >{{ crumb.label }}</a
+        >
+        <span
+          v-if="index < breadcrumbs.length - 1"
+          class="breadcrumbs__separator"
+          >/</span
+        >
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -31,10 +33,12 @@ const breadcrumbs: Crumb[] = [
 
 <style lang="scss" scoped>
 .breadcrumbs {
-  padding: 0;
-  margin: 0;
-  display: flex;
-  list-style: none;
+  ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+  }
 
   &__item {
     display: flex;

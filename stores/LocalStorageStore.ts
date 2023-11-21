@@ -1,16 +1,20 @@
 import { defineStore } from "pinia";
 import type { IProduct } from "~/types/types";
 
-export const useCartStore = defineStore("cartStore", {
+export const useLocalStorageStore = defineStore("cartStore", {
   state: () => {
     return {
       cart: [] as IProduct[],
+      favorite: [] as IProduct[],
     };
   },
   actions: {
     addToCart(item: IProduct) {
-      this.cart.push(item)
-    }
+      this.cart.push(item);
+    },
+    addToFavorite(item: IProduct) {
+      this.favorite.push(item);
+    },
   },
   persist: {
     storage: persistedState.localStorage,
