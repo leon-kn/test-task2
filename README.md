@@ -4,6 +4,7 @@
 
 На основании данных по товарам из приложенного items.json и названий материалов из materials.json отрисовать страницу со списком товаров согласно приложенному дизайну: https://www.figma.com/file/9Gcg8EvnmTDppPDxvRrmpi/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%0%BD%D0%B8%D0%B5-17-%D0%B8%D1%8E%D0%BB%D1%8F?node-id=1%3A23
 
+![Alt text](41.jpg)
 
 Требования:
 
